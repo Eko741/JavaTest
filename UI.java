@@ -79,7 +79,7 @@ public class UI extends Canvas implements Runnable {
 		
 		((MenuState)stateHandler.getObjectByID(StateID.menuState)).displayDirs();
 
-		handler.addObject(new InputBar(10, 34, ID.InputBar, standardFont, handler));
+		handler.addObject(new InputBar(10, 36, ID.InputBar, standardFont, handler));
 
 		this.addKeyListener(new KeyInput(handler, stateHandler));
 

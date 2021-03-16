@@ -56,35 +56,41 @@ public class KeyInput extends KeyAdapter {
 
 	public void sendText() {
 
-		UIElement tempObject = handler.getObjectById(ID.InputBar);
+		InputBar tempObject = (InputBar) handler.getObjectById(ID.InputBar);
 
-		if (((InputBar) tempObject).getText().equals("!createTest")) {
-			((CreateTestState) stateHandler.getObjectByID(StateID.createTestState)).createNewSet();
-		}
+		if (tempObject.getText().charAt(0) == '!') { // ! command
 
-		else if (((InputBar) tempObject).getText().equals("!b")) {
-
-			if (UI.state == StateID.menuState) {
-				((MenuState) stateHandler.getObjectByID(StateID.menuState)).displayDirs();
-
-			} else if (UI.state == StateID.testState) {
-				UI.state = StateID.menuState;
-
-				((MenuState) stateHandler.getObjectByID(StateID.menuState)).displaySets();
-
-			} else if (UI.state == StateID.createTestState) {
-
+			if (tempObject.getText().equals("!createTest")) {
+				((CreateTestState) stateHandler.getObjectByID(StateID.createTestState)).createNewSet();
 			}
 
+			else if (tempObject.getText().equals("!b")) {
+
+				if (UI.state == StateID.menuState) {
+					((MenuState) stateHandler.getObjectByID(StateID.menuState)).displayDirs();
+
+				} else if (UI.state == StateID.testState) {
+					UI.state = StateID.menuState;
+
+					((MenuState) stateHandler.getObjectByID(StateID.menuState)).displaySets();
+
+				} else if (UI.state == StateID.createTestState) {
+
+				}
+
+			}
+			else {
+				handler.uiElementList.add(new UIMessage(800, 34, ID.UIMessage, 1000, handler, "No such command"));
+				
+			}
 		}
 
+		
 		else {
-
-			stateHandler.getObjectByID(UI.state).input(((InputBar) tempObject).getText());
-
+			stateHandler.getObjectByID(UI.state).input(tempObject.getText());
 		}
 
-		((InputBar) tempObject).setText("");
+		tempObject.setText("");
 
 	}
 
