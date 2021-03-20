@@ -57,7 +57,9 @@ public class KeyInput extends KeyAdapter {
 	public void sendText() {
 
 		InputBar tempObject = (InputBar) handler.getObjectById(ID.InputBar);
-
+		if (tempObject.getText().equals("")) {
+			return;
+		}
 		if (tempObject.getText().charAt(0) == '!') { // ! command
 
 			if (tempObject.getText().equals("!createTest")) {

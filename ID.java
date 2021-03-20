@@ -5,7 +5,8 @@ public enum ID {
 	UIMessage(),
 	InputBar(),
 	FPSCounter(),
-	UIBox
+	UIBox(),
+	InstructionText()
 	;
 	
 }

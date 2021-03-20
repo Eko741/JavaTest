@@ -4,18 +4,23 @@ public class CreateTestState extends State {
 
 	private WordSet wordSet;
 
+	private int NOW; //number of words
 	private int wordIndex;
+	private int NOA; // numberOfAttributes
 	private int attributeIndex;
 	private static final int maxSetSize = 128;
-
+	private int WL = 0; //wordLength
+	private int WSAP; //Word start at pixel
+	
 	private String[][] wordLists;
 	private String[] attributeList;
-	
-	private UIText[] UIAttributeList;
-	
+
+	private UIText[][] UIAttributeList;
+
 	private boolean creatingAttributes;
 	private boolean creatingSet;
 
+	
 	public CreateTestState(StateID id, Handler handler, StateHandler stateHandler, Font font) {
 		super(id, handler, stateHandler, font);
 
@@ -28,49 +33,87 @@ public class CreateTestState extends State {
 
 		int maxSetSize = 128;
 		wordIndex = 0;
+		attributeIndex = 0;
+		WSAP = 0;
 		
 		attributeList = new String[maxSetSize];
-		
-		UIAttributeList = new UIText[maxSetSize]; 
-		
+		wordLists = new String[maxSetSize][maxSetSize];
+
+		UIAttributeList = new UIText[maxSetSize][maxSetSize];
+
 		creatingSet = true;
 		creatingAttributes = true;
 		
-		handler.uiElementList.add(new UIText(36, 72,  ID.UIText, font, "Create attribute, to type in words type !w"));
+
+		handler.uiElementList.add(new UIText(36, 72, ID.InstructionText, font, "Create attribute, to type in words type /w"));
 
 	}
 
 	public void input(String input) {
-		if(input.charAt(0) == '!') {
-			
-			if (input.equals("!d")) {
-				//saveWordData();
-			}
-			else if (input.equals("!w") && attributeIndex != 0 && creatingAttributes) {
-				
+		if (input.charAt(0) == '/') {
+
+			if (input.equals("/d")) {
+				// saveWordData();
+			} else if (input.equals("/w") && attributeIndex != 0 && creatingAttributes) {
+
 				creatingAttributes = false;
-				wordLists = new String[attributeIndex][];
+				NOA = attributeIndex;
+				attributeIndex = 0;
+				
+				handler.removeAllUIText();
+				
+				((UIText) handler.getObjectById(ID.InstructionText)).setText("Write word " + (wordIndex + 1) + " in attribute " + attributeList[attributeIndex] + ":" );
+
+				for(int i = 0; i < NOA; i++) {
+					UIAttributeList[0][i] = new UIText(72, UI.HEIGHT - 36 * (NOA - i)  - 48, ID.UIText, font, attributeList[i]);
+					handler.uiElementList.add(UIAttributeList[0][i]);
+					if (WSAP > TextIO.getStringWidth(attributeList[i])){
+						WSAP = TextIO.getStringWidth(attributeList[i]);						
+					}
+				}
+				
+			WSAP += 72 + 36;
 			}
-			
+
 		}
-		
-		
+
 		else if (creatingAttributes) {
 			attributeList[attributeIndex] = input;
-			UIAttributeList[attributeIndex] = new UIText(72, 108 + 36 * attributeIndex , ID.UIText, font, "Attribute " + (attributeIndex + 1) + ": "+  attributeList[attributeIndex] );
-			handler.uiElementList.add(UIAttributeList[attributeIndex]);
+			UIAttributeList[0][attributeIndex] = new UIText(72, 108 + 36 * attributeIndex, ID.UIText, font,
+					"Attribute " + (attributeIndex + 1) + ": " + attributeList[attributeIndex]);
+			handler.uiElementList.add(UIAttributeList[0][attributeIndex]);
+
+			attributeIndex++;
+
+		} else {
+			
+			wordLists[attributeIndex][wordIndex] = input;
+			
+			
+			
+			IntAndString tempObject = TextIO.nameInProgress(input, 41);
+			
+			if (WL < tempObject.number) {
+			WL = tempObject.number;
+			}
+			
+			
+			
+			
+			
+			UIAttributeList[wordIndex][attributeIndex] = new UIText(WSAP,  UI.HEIGHT - 36 * (NOA - attributeIndex)  - 48, ID.UIText, font, tempObject.text);
+			handler.uiElementList.add(UIAttributeList[wordIndex][attributeIndex]);
 			
 			attributeIndex++;
 			
-		}
-		
-		
-		
-		
-		else {
-			
-			
-			
+			if(attributeIndex == NOA) {
+				WSAP += WL + 12;
+				WL = 0;
+				attributeIndex = 0;
+				wordIndex++;
+				
+			}
+	
 		}
 
 	}
