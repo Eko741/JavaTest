@@ -51,7 +51,7 @@ public class InputBar extends UIElement {
 		handler.uiElementList.add( new UIBox (textLength + charWidth / 2, y, ID.UIBox, charWidth / 2, 24, handler));
 		
 		
-	
+		
 		
 	}
 	

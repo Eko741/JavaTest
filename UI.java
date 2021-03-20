@@ -138,6 +138,7 @@ public class UI extends Canvas implements Runnable {
 		g2d.setFont(standardFont);
 	
 		InputBar.metrics = g2d.getFontMetrics(standardFont);
+		TextIO.metrics = g2d.getFontMetrics(standardFont);
 
 		g2d.setColor(Color.black);
 
