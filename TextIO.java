@@ -18,10 +18,6 @@ public static boolean tooShort;
 		
 		while (true) {
 			
-			
-		
-			
-			
 			if(charIndex >= text.length()) {
 				tooShort = true; 
 				break;
@@ -57,5 +53,10 @@ public static boolean tooShort;
 	}
 	public static int getStringWidth(String text) {
 		return metrics.stringWidth(text);
+	}
+	
+	public static String fromXToY(String s, int x, int y) {
+		s.substring(x, y);		
+		return null;
 	}
 }

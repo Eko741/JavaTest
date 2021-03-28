@@ -29,7 +29,7 @@ public class MenuState extends State {
 				displaySets();
 			} else {
 
-				handler.uiElementList.add(new UIMessage(100, 34, ID.UIMessage, 1000, handler, "File not found"));
+				handler.addTopRightMessage("File not found", 1000);
 			}
 
 		}

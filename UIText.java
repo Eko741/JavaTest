@@ -39,5 +39,11 @@ public class UIText extends UIElement {
 	public void setFont(Font font) {
 		this.font = font;
 	}
+	public void addText(String text) {
+		this.text = this.text + text;
+	}
+	public void keepXletters(int lettersToKeep) {
+		text = text.substring(0, lettersToKeep);
+	}
 
 }

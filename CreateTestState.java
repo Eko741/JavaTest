@@ -2,9 +2,7 @@ import java.awt.Font;
 
 public class CreateTestState extends State {
 
-	private WordSet wordSet;
 
-	private int NOW; //number of words
 	private int wordIndex;
 	private int NOA; // numberOfAttributes
 	private int attributeIndex;
@@ -18,7 +16,6 @@ public class CreateTestState extends State {
 	private UIText[][] UIAttributeList;
 
 	private boolean creatingAttributes;
-	private boolean creatingSet;
 
 	
 	public CreateTestState(StateID id, Handler handler, StateHandler stateHandler, Font font) {
@@ -31,7 +28,6 @@ public class CreateTestState extends State {
 		UI.state = StateID.createTestState;
 		handler.removeAllUIText();
 
-		int maxSetSize = 128;
 		wordIndex = 0;
 		attributeIndex = 0;
 		WSAP = 0;
@@ -41,7 +37,7 @@ public class CreateTestState extends State {
 
 		UIAttributeList = new UIText[maxSetSize][maxSetSize];
 
-		creatingSet = true;
+	
 		creatingAttributes = true;
 		
 
@@ -53,6 +49,17 @@ public class CreateTestState extends State {
 		if (input.charAt(0) == '/') {
 
 			if (input.equals("/d")) {
+				if (attributeIndex == 0) {
+					for(int i = 0; i < NOA; i ++) {
+						
+					}
+					
+				}else {
+					handler.addObject(new UIMessage(800, 34, ID.UIMessage, 1000, handler, "Not full list of words"));
+					
+				}
+				
+				
 				// saveWordData();
 			} else if (input.equals("/w") && attributeIndex != 0 && creatingAttributes) {
 

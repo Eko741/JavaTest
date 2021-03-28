@@ -24,9 +24,11 @@ public class UI extends Canvas implements Runnable {
 	private StateHandler stateHandler;
 
 	private UIText fpsCounter;
-
 	
 
+	
+	public final static int  maxSetSize = 128;
+	
 	public static StateID state = StateID.menuState;
 
 	public UI() {
@@ -113,7 +115,7 @@ public class UI extends Canvas implements Runnable {
 
 				frames = 0;
 			}
-		}
+		}	
 		stop();
 	}
 
@@ -153,6 +155,8 @@ public class UI extends Canvas implements Runnable {
 
 	public static void main(String args[]) {
 		new UI();
+		
+		
 	}
 
 }
