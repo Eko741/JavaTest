@@ -3,7 +3,8 @@ import java.util.LinkedList;
 
 public class Handler {
 	LinkedList<UIElement> uiElementList = new LinkedList<UIElement>();
-
+	int numberOfMessages;
+	
 	public void tick() {
 		for (int i = 0; i < uiElementList.size(); i++) {
 			UIElement tempObject = uiElementList.get(i);
@@ -59,4 +60,16 @@ public class Handler {
 		return null;
 		
 	}
+	public void removeTopRighteMessage(UIElement object) {
+		numberOfMessages--;
+		removeObject(object);
+	}
+	
+	public void addTopRightMessage(String text, int time) {
+		
+		numberOfMessages++;
+		this.uiElementList.add((new UIMessage(UI.WIDTH - TextIO.getStringWidth(text) - 24, 36 * numberOfMessages, ID.UIMessage, time, this, text)));
+		
+	}
+	
 }

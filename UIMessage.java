@@ -19,7 +19,7 @@ public class UIMessage extends UIElement {
 	public void tick() {
 		long now = System.currentTimeMillis();
 		if (now - startTime >= timeOnScreen) {
-		handler.uiElementList.remove(this);
+		handler.removeTopRighteMessage(this);
 		}
 	}
 

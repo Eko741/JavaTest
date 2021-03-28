@@ -60,7 +60,7 @@ public class KeyInput extends KeyAdapter {
 		if (tempObject.getText().equals("")) {
 			return;
 		}
-		if (tempObject.getText().charAt(0) == '!') { // ! command
+		if (tempObject.getText().charAt(0) == '!') { // ! = command indicator
 
 			if (tempObject.getText().equals("!createTest")) {
 				((CreateTestState) stateHandler.getObjectByID(StateID.createTestState)).createNewSet();

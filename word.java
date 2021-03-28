@@ -1,13 +1,12 @@
 
 class WordSet {
-	String wordsSE[];
-	String wordsDE[];
-	int setSize;
-
-	WordSet(String wordSE[], String wordsDE[], int setSize) {
-		this.wordsSE = wordSE;
-		this.wordsDE = wordsDE;
-		this.setSize = setSize;
-
+	String wordSet[][]; // x = words, y = attributes
+	int NOA;
+	int NOW;
+	
+	WordSet(String[][] wordSet) {
+		this.wordSet = wordSet;
+		this.NOA = wordSet[0].length;
+		this.NOW = wordSet.length;
 	}
 }
