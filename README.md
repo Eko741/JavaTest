@@ -1,2 +1,2 @@
 # JavaTest
-Simple vocabulary excersize program
+Simple vocabulary exercise program
