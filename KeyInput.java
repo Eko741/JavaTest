@@ -63,7 +63,9 @@ public class KeyInput extends KeyAdapter {
 		if (tempObject.getText().charAt(0) == '!') { // ! = command indicator
 
 			if (tempObject.getText().equals("!createTest")) {
+				stateHandler.changeState(StateID.createTestState);
 				((CreateTestState) stateHandler.getObjectByID(StateID.createTestState)).createNewSet();
+				
 			}
 
 			else if (tempObject.getText().equals("!b")) {

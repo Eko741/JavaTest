@@ -147,4 +147,8 @@ public class TrainTestState extends State {
 
 	}
 
+	public void startState() {
+		handler.removeAllUIText();
+	}
+
 }

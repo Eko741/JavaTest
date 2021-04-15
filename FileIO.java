@@ -124,16 +124,6 @@ public class FileIO {
 				x.next();
 			}
 		}
-
-		/*
-		 * while (!x.hasNextInt()) { tempString += x.next() + ", "; }
-		 * 
-		 * setList[i] = tempString; tempString = "";
-		 * 
-		 * x.next();
-		 * 
-		 * while (!x.hasNextInt()) { x.next(); } x.next(); }
-		 */
 		
 		return setList;
 
@@ -201,7 +191,6 @@ public class FileIO {
 		oldFile.delete();
 		File dump = new File(filePath);
 		newFile.renameTo(dump);
-		System.out.println("Save Succsesful");
 	}
 
 	public static String findSet(Scanner x, int setToFind) {
@@ -238,7 +227,7 @@ public class FileIO {
 		for (int i = 0; i < wordSet.NOA; i++) {
 			pw.print(setToString(set) + (i + 1) + ",");
 			for (int j = 0; j < wordSet.NOW; j++) {
-				pw.print(wordSet.wordSet[i][j] + ",");
+				pw.print(wordSet.wordSet[j][i] + ",");
 			}
 			pw.println("nl");
 		}

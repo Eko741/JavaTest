@@ -20,6 +20,7 @@ public class MenuState extends State {
 
 				UI.state = StateID.testState;
 				handler.removeAllUIText();
+				stateHandler.changeState(StateID.testState);
 				((TrainTestState)stateHandler.getObjectByID(StateID.testState)).startTraining(FileIO.loadTest(i, currentFilePath));
 			}
 
@@ -52,6 +53,12 @@ public class MenuState extends State {
 			handler.addObject(new UIText(20, 34 + (i + 1) * 24, ID.UIText, font, setList[i]));
 		}
 
+	}
+
+
+	public void startState() {
+		handler.removeAllUIText();
+		
 	}
 
 
