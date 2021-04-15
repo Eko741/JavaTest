@@ -6,15 +6,12 @@ public static FontMetrics metrics;
 
 public static boolean tooShort; 
 
-	public static IntAndString nameInProgress(String text, int lengthInPixels) {
+	public static IntAndString firstLettersOfWord(String text, int lengthInPixels) {
 		
 		IntAndString lengthAndText = new IntAndString(0, "");
 		
 		int originalLength = 0;
-		int charIndex = 0;
-
-		
-		
+		int charIndex = 0;		
 		
 		while (true) {
 			
@@ -35,8 +32,6 @@ public static boolean tooShort;
 		
 		
 		String substring = text.substring(0, charIndex);		
-		
-		
 		
 		
 		if(!tooShort) {

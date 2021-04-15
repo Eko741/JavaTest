@@ -17,5 +17,6 @@ public abstract class State {
 		return id;
 	}
 	public abstract void input(String input);	
+	public abstract void startState();
 	
 }

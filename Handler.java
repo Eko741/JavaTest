@@ -71,5 +71,8 @@ public class Handler {
 		this.uiElementList.add((new UIMessage(UI.WIDTH - TextIO.getStringWidth(text) - 24, 36 * numberOfMessages, ID.UIMessage, time, this, text)));
 		
 	}
+	public void addTopRightMessage(String text) {
+		this.uiElementList.add((new UIMessage(UI.WIDTH - TextIO.getStringWidth(text) - 24, 36 * numberOfMessages, ID.UIMessage, 1000, this, text)));
+	}
 	
 }

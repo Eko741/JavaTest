@@ -27,6 +27,10 @@ public class StateHandler {
 		
 		
 	}
+	public void changeState(StateID id) {
+		UI.state = id;
+		getObjectByID(id).startState();
+	}
 	
 	
 }
