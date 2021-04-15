@@ -1,0 +1,34 @@
+11
+0011,testType1,test1,nl
+0012,testType2,test2,nl
+0021,testType11,test11,test12,nl
+0022,testType21,test21,test22,nl
+0023,testType31,test31,test32,nl
+0031,swedish,ha,folk,nl
+0032,german,haben,leute,nl
+0033,type,verb,noun,nl
+0041,swedish,ha,folk,nl
+0042,german,haben,leute,nl
+0043,type,verb,noun,nl
+0051,swedish,ha,folk,nl
+0052,german,haben,leute,nl
+0053,type,verb,noun,nl
+0061,swedish,ha,folk,nl
+0062,german,haben,leute,nl
+0063,type,verb,noun,nl
+0071,swedish,ha,folk,nl
+0072,german,haben,leute,nl
+0073,type,verb,noun,nl
+0081,swedish,ha,folk,nl
+0082,german,haben,leute,nl
+0083,type,verb,noun,nl
+0091,swedish,ha,folk,nl
+0092,german,haben,leute,nl
+0093,type,verb,noun,nl
+0101,swedish,ha,folk,nl
+0102,german,haben,leute,nl
+0103,type,verb,noun,nl
+0111,attr1,word 1,word 4,word ,nl
+0112,attr2,word 2,word 5,word 8,nl
+0113,word1,word 3,word 6,word 9,nl
+0120
