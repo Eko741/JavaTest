@@ -1,25 +1,25 @@
 import java.awt.Graphics;
 
-public class UIMessage extends UIElement {
-	private long timeOnScreen;
+public class TopRightMessage extends UIElement {
+	private int timeOnScreen;
 	private Handler handler;
+	private String text;
 	private long startTime;
-	String text;
 
-	public UIMessage(int x, int y, ID id, int timeOnScreen, Handler handler, String text) {
+	public TopRightMessage(int x, int y, ID id, int timeOnScreen, Handler handler, String text) {
 		super(x, y, id);
 		this.timeOnScreen = timeOnScreen;
 		this.handler = handler;
 		this.text = text;
-		
+
 		startTime = System.currentTimeMillis();
-		
+
 	}
 
 	public void tick() {
 		long now = System.currentTimeMillis();
 		if (now - startTime >= timeOnScreen) {
-		handler.removeTopRighteMessage(this);
+			handler.removeTopRighteMessage(this);
 		}
 	}
 
