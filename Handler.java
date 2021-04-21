@@ -2,7 +2,7 @@ import java.awt.Graphics;
 import java.util.LinkedList;
 
 public class Handler {
-	LinkedList<UIElement> uiElementList = new LinkedList<UIElement>();
+	LinkedList<UIElement> uiElementList = new LinkedList<UIElement>(); 
 	int numberOfMessages;
 	
 	public void tick() {
@@ -60,19 +60,28 @@ public class Handler {
 		return null;
 		
 	}
+	
 	public void removeTopRighteMessage(UIElement object) {
 		numberOfMessages--;
 		removeObject(object);
+		for(int i = 0; uiElementList.size() > i; i++) {
+			UIElement tempObject = uiElementList.get(i);
+			if (tempObject instanceof TopRightMessage) {
+				tempObject = ((TopRightMessage)tempObject);
+				tempObject.setY(tempObject.getY() - 36);
+			}
+		}
 	}
 	
 	public void addTopRightMessage(String text, int time) {
 		
 		numberOfMessages++;
-		this.uiElementList.add((new UIMessage(UI.WIDTH - TextIO.getStringWidth(text) - 24, 36 * numberOfMessages, ID.UIMessage, time, this, text)));
+		this.uiElementList.add((new TopRightMessage(UI.WIDTH - TextIO.getStringWidth(text) - 24, 36 * numberOfMessages, ID.UIMessage, time, this, text)));
 		
 	}
 	public void addTopRightMessage(String text) {
-		this.uiElementList.add((new UIMessage(UI.WIDTH - TextIO.getStringWidth(text) - 24, 36 * numberOfMessages, ID.UIMessage, 1000, this, text)));
+		numberOfMessages++;
+		this.uiElementList.add((new TopRightMessage(UI.WIDTH - TextIO.getStringWidth(text) - 24, 36 * numberOfMessages, ID.UIMessage, 1000, this, text)));
 	}
 	
 }
